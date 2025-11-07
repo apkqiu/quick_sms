@@ -25,13 +25,13 @@ while True:
     capture_time = time.ctime()
     total = get_screenshot_of_current_list()
     total.save('total.png')
-    if os.system("git add ."): continue
-    if os.system("git commit -m 'update'"): continue
+    if os.system("git add . > NUL 2>1"): continue
+    if os.system("git commit -m 'update' > NUL 2>1"): continue
     while True:
         os.system("git config unset http.proxy")
-        if not os.system("git push"): break
+        if not os.system("git push > NUL 2>1"): break
         os.system("git config set http.proxy http://127.0.0.1:10808")
-        if not os.system("git push"): break
+        if not os.system("git push > NUL 2>1"): break
     print(capture_time, "pushed")
 
 # prev = PIL.Image.new('RGB', (0, 0))
