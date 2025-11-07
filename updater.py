@@ -21,9 +21,8 @@ def connect_picture(a:PIL.Image.Image,b:PIL.Image.Image):
     result.paste(b.crop((0, height, b.width, b.height)), (0, a.height))
     return result
 while True:
-    pyautogui.moveTo(x=300, y=400)
-    pyautogui.hscroll(2147483647)
     time.sleep(1)
+    capture_time = time.ctime()
     total = get_screenshot_of_current_list()
     total.save('total.png')
     if os.system("git add ."): continue
@@ -33,7 +32,7 @@ while True:
         if not os.system("git push"): break
         os.system("git config set http.proxy http://127.0.0.1:10808")
         if not os.system("git push"): break
-
+    print(capture_time, "pushed")
 
 # prev = PIL.Image.new('RGB', (0, 0))
 # curr = get_screenshot_of_current_list()
